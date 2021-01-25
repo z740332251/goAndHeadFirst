@@ -5,12 +5,17 @@ import (
 )
 func main() {
 	weatherStationSubject := subject.NewWeatherStationSubject()
-	weatherStationSubject.SetCurrentWeather()
 	temperatureObserver := new(observer.TemperatureObserver)
 	weatherStationSubject.Register(temperatureObserver)
 
 	humidityObserver := new(observer.HumidityObserver)
 	weatherStationSubject.Register(humidityObserver)
 
-	weatherStationSubject.NotifyAll()
+	weatherStationSubject.SetCurrentWeather()
+
+	weatherStationSubject.SetCurrentWeather()
+
+	weatherStationSubject.SetCurrentWeather()
+
+
 }

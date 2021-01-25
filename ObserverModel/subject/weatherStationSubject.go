@@ -24,17 +24,10 @@ func NewWeatherStationSubject() *WeatherStationSubject{
 	return wss
 }
 
-func getWeather(weather data.Weather) data.Weather{
-	/**
-	 * TODO(不在东墙): 待删除
-	**/
-	weather.Humidity = strconv.FormatFloat(float64(rand.Float32()),'E',-1,32)
-	weather.Temperature = strconv.FormatFloat(float64(rand.Float32()),'E',-1,32)
-	return weather
-}
 func (wss *WeatherStationSubject) SetCurrentWeather() {
 	wss.Weather.Humidity = strconv.Itoa(rand.Intn(100)) +"%"
 	wss.Weather.Temperature = strconv.Itoa(rand.Intn(40)) + "℃"
+	wss.NotifyAll()
 }
 func (wss *WeatherStationSubject) Register(observer observer.Observer)  {
 	wss.observers = append(wss.observers, observer)
